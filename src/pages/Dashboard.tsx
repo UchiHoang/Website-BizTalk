@@ -2,15 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ProBadge } from "@/components/ProBadge";
-import { Navigation } from "@/components/Navigation";
+import { Navigation } from "@/components/Navigation"; // Sử dụng Navigation chuẩn
 import { Link } from "react-router-dom";
-import { 
-  BookOpen, 
-  Mic, 
-  Trophy, 
-  TrendingUp,
-  Target
-} from "lucide-react";
+import { BookOpen, Mic, Trophy, TrendingUp, Target } from "lucide-react";
 import { mockUser, mockProgress, mockLeaderboard, mockBadges } from "@/lib/mockData";
 
 export default function Dashboard() {
@@ -18,7 +12,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navigation /> {/* Menu tự động cập nhật tiếng Anh từ file Navigation.tsx */}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
@@ -35,10 +29,10 @@ export default function Dashboard() {
           <Card className="p-6 shadow-card">
             <div className="flex items-center gap-2 mb-4">
               <Target className="h-5 w-5 text-success" />
-              <h3 className="font-semibold">Mục tiêu tuần</h3>
+              <h3 className="font-semibold">Weekly Goal</h3>
             </div>
             <p className="text-2xl font-bold mb-3">
-              {mockProgress.completedThisWeek} / {mockProgress.weeklyGoal} Bài học
+              {mockProgress.completedThisWeek} / {mockProgress.weeklyGoal} Lessons
             </p>
             <Progress value={weekProgress} className="h-2" />
           </Card>
@@ -47,7 +41,7 @@ export default function Dashboard() {
           <Card className="p-6 shadow-card">
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp className="h-5 w-5 text-accent" />
-              <h3 className="font-semibold">Tiến độ cấp độ</h3>
+              <h3 className="font-semibold">Level Progress</h3>
             </div>
             <p className="text-2xl font-bold mb-3">B2 → C1</p>
             <Progress value={65} className="h-2" />

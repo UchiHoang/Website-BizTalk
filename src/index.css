@@ -137,3 +137,14 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-lg);
   }
 }
+
+/* Smooth scroll for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent sticky header from covering anchored sections */
+/* Applies a top offset when navigating to an element with an id */
+[id] {
+  scroll-margin-top: 5rem;
+}

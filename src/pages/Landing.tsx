@@ -3,22 +3,18 @@ import { Card } from "@/components/ui/card";
 import { ProBadge } from "@/components/ProBadge";
 import { Navigation } from "@/components/Navigation";
 import { Link } from "react-router-dom";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { 
-  Mic, 
-  BookOpen, 
-  TrendingUp, 
-  MessageSquare, 
-  CheckCircle2, 
-  Sparkles,
-  Globe,
-  Users,
-  Award
+  Mic, BookOpen, TrendingUp, MessageSquare, 
+  CheckCircle2, Sparkles, Globe, Award, 
+  Rocket, Mail, MapPin, Phone
 } from "lucide-react";
 
 export default function Landing() {
   return (
     <div className="min-h-screen">
-      <Navigation showAuthButtons />
+      <Navigation showAuthButtons={true} />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden gradient-hero py-20 sm:py-28 lg:py-36">
@@ -36,7 +32,7 @@ export default function Landing() {
             </h1>
             <p className="text-lg sm:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
               Personalized lessons, real-time speech correction, and adaptive vocabulary training. 
-              Your path to fluency starts here.
+              Your path to global fluency starts here.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/placement-test">
@@ -63,7 +59,7 @@ export default function Landing() {
               Everything You Need to Excel
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive tools designed to improve all aspects of your English proficiency
+              Comprehensive tools designed to improve all aspects of your English proficiency.
             </p>
           </div>
 
@@ -92,36 +88,6 @@ export default function Landing() {
             </Card>
 
             <Card className="p-6 shadow-card hover:shadow-lg-custom transition-shadow">
-              <div className="w-12 h-12 rounded-lg bg-success/10 flex items-center justify-center mb-4">
-                <Sparkles className="h-6 w-6 text-success" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Active Content Feed</h3>
-              <p className="text-muted-foreground">
-                Personalized articles, podcasts, and videos with embedded micro-lessons and vocabulary highlights.
-              </p>
-            </Card>
-
-            <Card className="p-6 shadow-card hover:shadow-lg-custom transition-shadow">
-              <div className="w-12 h-12 rounded-lg bg-warning/10 flex items-center justify-center mb-4">
-                <BookOpen className="h-6 w-6 text-warning" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Professional Courses</h3>
-              <p className="text-muted-foreground">
-                Industry-specific modules with video lectures, vocabulary cards, and practice exercises tailored to your career field.
-              </p>
-            </Card>
-
-            <Card className="p-6 shadow-card hover:shadow-lg-custom transition-shadow">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <BookOpen className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Vocabulary Trainer</h3>
-              <p className="text-muted-foreground">
-                Spaced repetition system (SRS) with topical decks to maximize retention and recall.
-              </p>
-            </Card>
-
-            <Card className="p-6 shadow-card hover:shadow-lg-custom transition-shadow">
               <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
                 <MessageSquare className="h-6 w-6 text-accent" />
               </div>
@@ -133,19 +99,69 @@ export default function Landing() {
                 Practice workplace conversations with AI-powered role-play scenarios and instant pronunciation feedback.
               </p>
             </Card>
+            {/* Add more cards as needed */}
+          </div>
+        </div>
+      </section>
+
+      {/* About Us Section - Startup Story */}
+      <section id="about" className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+                <Rocket className="h-4 w-4" /> Our Mission
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+                Empowering Global Communication
+              </h2>
+              <div className="space-y-4 text-lg text-muted-foreground">
+                <p>
+                  BizTalk began with a simple idea: Language should be a bridge, not a barrier. As a startup founded by passionate educators and AI engineers, we realized that traditional learning methods were leaving professionals behind.
+                </p>
+                <p>
+                  We are building the future of language acquisition—where Artificial Intelligence meets human pedagogy. Our goal is to help 1 million professionals confidently express themselves on the global stage.
+                </p>
+                <p>
+                  Join us on this journey to break down borders and unlock career potential through the power of English.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-tr from-primary/20 to-accent/20 p-8 flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-4 w-full">
+                  <Card className="p-6 shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                    <h3 className="text-4xl font-bold text-primary mb-2">10k+</h3>
+                    <p className="text-sm text-muted-foreground">Active Learners</p>
+                  </Card>
+                  <Card className="p-6 shadow-lg mt-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+                    <h3 className="text-4xl font-bold text-accent mb-2">95%</h3>
+                    <p className="text-sm text-muted-foreground">Success Rate</p>
+                  </Card>
+                  <Card className="p-6 shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                    <h3 className="text-4xl font-bold text-warning mb-2">24/7</h3>
+                    <p className="text-sm text-muted-foreground">AI Availability</p>
+                  </Card>
+                  <Card className="p-6 shadow-lg mt-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+                    <h3 className="text-4xl font-bold text-success mb-2">50+</h3>
+                    <p className="text-sm text-muted-foreground">Countries</p>
+                  </Card>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 sm:py-28">
+      <section id="pricing" className="py-20 sm:py-28 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Bảng Dịch Vụ
+              Pricing Plans
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Chọn gói phù hợp với nhu cầu học tập của bạn
+              Choose the plan that fits your learning pace.
             </p>
           </div>
 
@@ -153,26 +169,27 @@ export default function Landing() {
             {/* Free Plan */}
             <Card className="p-8 shadow-card">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">Gói miễn phí</h3>
+                <h3 className="text-2xl font-bold mb-2">Free Starter</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">0 VNĐ</span>
+                  <span className="text-4xl font-bold">0 VND</span>
                 </div>
+                <p className="text-sm text-muted-foreground mt-1">Forever</p>
               </div>
               
               <ul className="space-y-3 mb-8 min-h-[200px]">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Truy cập các bài giảng, bài tập ngữ pháp, từ vựng</span>
+                  <span>Access to basic grammar & vocabulary</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Truy cập 5 Module Email cơ bản</span>
+                  <span>5 Basic Email Modules</span>
                 </li>
               </ul>
               
               <Link to="/placement-test" className="block">
                 <Button variant="outline" className="w-full">
-                  Bắt đầu miễn phí
+                  Start for Free
                 </Button>
               </Link>
             </Card>
@@ -180,31 +197,31 @@ export default function Landing() {
             {/* Basic Plan */}
             <Card className="p-8 shadow-lg-custom border-2 border-accent">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">Gói cơ bản</h3>
+                <h3 className="text-2xl font-bold mb-2">Basic</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">179,000 VNĐ</span>
+                  <span className="text-4xl font-bold">179,000 VND</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">/tháng</p>
+                <p className="text-sm text-muted-foreground mt-1">/month</p>
               </div>
               
               <ul className="space-y-3 mb-8 min-h-[200px]">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Truy cập 10 Module Email cơ bản</span>
+                  <span>Access to 10 Email Modules</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Luyện tập AI có giới hạn (5 lần/ngày)</span>
+                  <span>Limited AI Practice (5/day)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Phản hồi cơ bản (sửa lỗi ngữ pháp/phát âm)</span>
+                  <span>Basic Feedback (Grammar/Pronunciation)</span>
                 </li>
               </ul>
               
               <Link to="/ai-chatbot" className="block">
                 <Button className="w-full">
-                  Chọn gói cơ bản
+                  Choose Basic
                 </Button>
               </Link>
             </Card>
@@ -216,37 +233,107 @@ export default function Landing() {
               </div>
               
               <div className="mb-6">
-                <h3 className="text-2xl font-bold mb-2">Gói cao cấp</h3>
+                <h3 className="text-2xl font-bold mb-2">Premium</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">1,990,000 VNĐ</span>
+                  <span className="text-4xl font-bold">1,990,000 VND</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1">/năm</p>
+                <p className="text-sm text-muted-foreground mt-1">/year</p>
               </div>
               
               <ul className="space-y-3 mb-8 min-h-[200px]">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Luyện tập AI không giới hạn</span>
+                  <span>Unlimited AI Practice</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Phản hồi chuyên sâu</span>
+                  <span>Deep Expert Feedback</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Hỗ trợ bộ công cụ kỹ năng mềm</span>
+                  <span>Soft Skills Toolkit</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
-                  <span>Báo cáo tiến độ chi tiết</span>
+                  <span>Detailed Progress Reports</span>
                 </li>
               </ul>
               
               <Link to="/ai-chatbot" className="block">
-                <Button className="w-full">
-                  Chọn gói cao cấp
+                <Button className="w-full gradient-pro text-white border-none hover:opacity-90">
+                  Choose Premium
                 </Button>
               </Link>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Us Section */}
+      <section id="contact" className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get in Touch</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Have questions about our courses or enterprise solutions? We'd love to hear from you.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Email Us</h4>
+                    <p className="text-muted-foreground">support@biztalk.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <MapPin className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Office</h4>
+                    <p className="text-muted-foreground">TechnoPark Tower, Hanoi, Vietnam</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Call Us</h4>
+                    <p className="text-muted-foreground">(+84) 123 456 789</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Card className="p-8 shadow-card">
+              <form className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">First Name</label>
+                    <Input placeholder="John" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Last Name</label>
+                    <Input placeholder="Doe" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Email</label>
+                  <Input type="email" placeholder="john@example.com" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Message</label>
+                  <Textarea placeholder="How can we help you?" className="min-h-[120px]" />
+                </div>
+                <Button type="submit" className="w-full">Send Message</Button>
+              </form>
             </Card>
           </div>
         </div>
@@ -283,7 +370,7 @@ export default function Landing() {
               <span className="font-bold">BizTalk</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2024 BizTalk. Empowering English learners worldwide.
+              © 2025 BizTalk. Empowering English learners worldwide.
             </p>
           </div>
         </div>

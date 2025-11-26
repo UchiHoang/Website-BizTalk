@@ -3,8 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Link } from "react-router-dom";
-import { Globe, ArrowLeft, RotateCcw, CheckCircle2, XCircle, Eye, EyeOff } from "lucide-react";
+import { Navigation } from "@/components/Navigation"; // Import Navigation
+import { ArrowLeft, RotateCcw, CheckCircle2, XCircle, Eye } from "lucide-react";
 import { mockVocabDecks } from "@/lib/mockData";
 import { toast } from "sonner";
 
@@ -36,27 +36,7 @@ export default function Vocabulary() {
   if (!selectedDeck) {
     return (
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <Link to="/dashboard" className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center">
-                  <Globe className="h-6 w-6 text-primary-foreground" />
-                </div>
-                <span className="text-2xl font-bold">BizTalk</span>
-              </Link>
-              
-              <nav className="hidden md:flex items-center gap-6">
-                <Link to="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">Dashboard</Link>
-                <Link to="/lessons" className="text-sm font-medium hover:text-primary transition-colors">Lessons</Link>
-                <Link to="/speech" className="text-sm font-medium hover:text-primary transition-colors">Speech</Link>
-              </nav>
-              
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
+        <Navigation /> {/* Đồng nhất Navigation */}
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="max-w-4xl mx-auto">
@@ -124,13 +104,14 @@ export default function Vocabulary() {
     );
   }
 
-  // Review Mode
+  // Review Mode — use the shared Navigation for consistency
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/80 border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+      <Navigation />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-2xl mx-auto">
+          <div className="flex items-center justify-between mb-6">
             <Button 
               variant="ghost" 
               onClick={() => {
@@ -142,18 +123,12 @@ export default function Vocabulary() {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Decks
             </Button>
-            
+
             <span className="font-medium">
               {currentCardIndex + 1} / {deck?.cards.length}
             </span>
-            
-            <ThemeToggle />
           </div>
-        </div>
-      </header>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-2xl mx-auto">
           <div className="mb-6">
             <Progress value={((currentCardIndex + 1) / (deck?.cards.length || 1)) * 100} className="h-2" />
           </div>

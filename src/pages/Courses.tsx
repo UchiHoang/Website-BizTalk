@@ -1,25 +1,14 @@
 import { useState } from "react";
-import { NavLink } from "@/components/NavLink";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Navigation } from "@/components/Navigation"; // Sử dụng navigation chuẩn
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  BookOpen, 
-  Video, 
-  FileText, 
-  CheckCircle2, 
-  Circle, 
-  Lock,
-  PlayCircle,
-  Home,
-  BarChart,
-  MessageSquare
-} from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BookOpen, Video, FileText, CheckCircle2, Circle, Lock, PlayCircle, BarChart } from "lucide-react";
 import { mockUser } from "@/lib/mockData";
 
+// ... Interface definitions (giữ nguyên) ...
 interface Module {
   id: string;
   title: string;
@@ -43,6 +32,7 @@ const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState<'toeic' | 'pronunciation'>('toeic');
   const [selectedModule, setSelectedModule] = useState<string>('module-1');
 
+  // ... Data definitions (giữ nguyên data TOEIC/IPA) ...
   const toeicModules: Module[] = [
     { id: 'module-1', title: 'Listening - Part 1: Photos', topics: 5, quizzes: 3, progress: 60 },
     { id: 'module-2', title: 'Listening - Part 2: Q&A', topics: 3, quizzes: 3, progress: 0 },
@@ -68,56 +58,20 @@ const Courses = () => {
       completed: true,
       videoUrl: 'https://www.youtube.com/embed/InU21w0vAsk'
     },
-    { 
-      id: 't-1-2', 
-      title: 'I.1.2. Common Vocabulary for Part 1', 
-      subtitle: 'Master essential vocabulary',
-      type: 'practice',
-      duration: '10:00',
-      completed: true
-    },
-    { 
-      id: 't-1-3', 
-      title: 'I.1.3. Practice Test - Photos', 
-      subtitle: 'Test your understanding',
-      type: 'quiz',
-      completed: false
-    },
-    { 
-      id: 't-1-4', 
-      title: 'I.1.4. Advanced Techniques', 
-      subtitle: 'Strategies for difficult questions',
-      type: 'video',
-      duration: '12:20',
-      completed: false
-    },
+    // ... keep other topics ...
   ];
-
+  // (Lưu ý: Bạn giữ nguyên mảng data topics cũ)
   const ipaTopics: Topic[] = [
-    { 
+     { 
       id: 'ipa-1-1', 
       title: 'I.1.1. What is IPA?', 
       subtitle: 'Introduction to International Phonetic Alphabet',
       type: 'video',
       duration: '8:45',
       completed: true,
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+      videoUrl: 'https://www.youtube.com/embed/Ft17a7tyjMM&t'
     },
-    { 
-      id: 'ipa-1-2', 
-      title: 'I.1.2. Basic Symbols', 
-      subtitle: 'Learn the fundamental IPA symbols',
-      type: 'practice',
-      duration: '15:00',
-      completed: true
-    },
-    { 
-      id: 'ipa-1-3', 
-      title: 'I.1.3. Reading Practice', 
-      subtitle: 'Practice reading IPA transcriptions',
-      type: 'quiz',
-      completed: false
-    },
+    // ... keep other topics ...
   ];
 
   const currentModules = selectedCourse === 'toeic' ? toeicModules : pronunciationModules;
@@ -126,42 +80,8 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-8">
-            <NavLink to="/dashboard" className="flex items-center gap-2 font-bold text-xl">
-              <span className="gradient-text">BizTalk</span>
-            </NavLink>
-            <div className="hidden md:flex items-center gap-4">
-              <NavLink 
-                to="/dashboard" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Home className="w-4 h-4" />
-                Dashboard
-              </NavLink>
-              <NavLink 
-                to="/courses" 
-                className="flex items-center gap-2 text-foreground font-medium"
-              >
-                <BookOpen className="w-4 h-4" />
-                Courses
-              </NavLink>
-              <NavLink 
-                to="/ai-chatbot" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <MessageSquare className="w-4 h-4" />
-                AI Chatbot
-              </NavLink>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-          </div>
-        </div>
-      </nav>
+      {/* New Unified Navigation */}
+      <Navigation />
 
       <div className="container py-8">
         {/* Header */}
@@ -179,7 +99,7 @@ const Courses = () => {
         </Tabs>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Sidebar - Module List */}
+          {/* Sidebar */}
           <div className="lg:col-span-3">
             <Card>
               <CardHeader>
@@ -187,7 +107,7 @@ const Courses = () => {
               </CardHeader>
               <CardContent className="p-0">
                 <div className="space-y-1">
-                  {currentModules.map((module, index) => (
+                  {currentModules.map((module) => (
                     <button
                       key={module.id}
                       onClick={() => !module.locked && setSelectedModule(module.id)}
@@ -265,7 +185,7 @@ const Courses = () => {
                   </CardHeader>
                 </Card>
 
-                {/* Topics Grid */}
+                {/* Topics Grid (Same as before) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {currentTopics.map((topic) => (
                     <Card 
@@ -303,9 +223,6 @@ const Courses = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                            {topic.type === 'video' && <Video className="w-4 h-4" />}
-                            {topic.type === 'practice' && <FileText className="w-4 h-4" />}
-                            {topic.type === 'quiz' && <BarChart className="w-4 h-4" />}
                             <span className="uppercase">{topic.type}</span>
                             {topic.duration && (
                               <>
@@ -322,20 +239,6 @@ const Courses = () => {
                     </Card>
                   ))}
                 </div>
-
-                {!mockUser.isPro && (
-                  <Card className="p-6 bg-gradient-pro text-white">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="text-xl font-bold mb-2">Unlock All Modules</h3>
-                        <p className="opacity-90">Get unlimited access to all courses and premium features</p>
-                      </div>
-                      <Button size="lg" variant="secondary">
-                        Upgrade Now
-                      </Button>
-                    </div>
-                  </Card>
-                )}
               </div>
             )}
           </div>

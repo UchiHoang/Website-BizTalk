@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Navigation } from "@/components/Navigation";
+import { Navigation } from "@/components/Navigation"; // Import Navigation
 import { Link } from "react-router-dom";
 import { Search, Clock, BookOpen, Headphones, Video } from "lucide-react";
 import { mockLessons } from "@/lib/mockData";
@@ -45,7 +45,7 @@ export default function Lessons() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <Navigation /> {/* Sử dụng Navigation chuẩn */}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
